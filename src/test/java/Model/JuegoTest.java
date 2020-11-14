@@ -14,8 +14,8 @@ public class JuegoTest {
 		Tablero tablero = juego.getTablero();		
 		Tablero tableroComparar = new Tablero(9,9);
 		
-		assertEquals(tablero,tableroComparar);
-		tableroComparar.initBoard();
+		assertEquals(tablero.getNumCols(),tableroComparar.getNumCols());
+		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());		
 	}
 
 }
