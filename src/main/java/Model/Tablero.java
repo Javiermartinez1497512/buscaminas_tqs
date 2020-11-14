@@ -22,7 +22,11 @@ public class Tablero {
   }
   
   public void colocarMinas(int[][] _posicionesMinas){
-	  
+	  for (int i = 0; i < _posicionesMinas.length; i++) { 
+      	for (int j = 0; j < _posicionesMinas[i].length; j++) {
+      		casillas[i][j].setMina(true);
+      	}
+	  }
   }
   
   public int getNumFilas() {
