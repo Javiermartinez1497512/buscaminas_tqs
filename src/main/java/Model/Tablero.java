@@ -23,9 +23,9 @@ public class Tablero {
   
   public void colocarMinas(int[][] _posicionesMinas){
 	  for (int i = 0; i < _posicionesMinas.length; i++) { 
-      	for (int j = 0; j < _posicionesMinas[i].length; j++) {
-      		casillas[i][j].setMina(true);
-      	}
+      		int fila = _posicionesMinas[i][0];
+      		int columna = _posicionesMinas[i][1];
+		    casillas[fila][columna].setMina(true);
 	  }
   }
   
@@ -41,3 +41,4 @@ public class Tablero {
 	return this.casillas[_fila][_columna];
   }
 }
+

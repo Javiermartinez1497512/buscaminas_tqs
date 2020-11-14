@@ -2,6 +2,8 @@ package Model;
 
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,20 +24,37 @@ public class JuegoTest {
 		Tablero tableroComparar = new Tablero(9,9);
 		
 		assertEquals(tablero.getNumCols(),tableroComparar.getNumCols());
-		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());		
+		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());
+		assertTrue(juego.getNumMinas() == 10);
+		
+		int[][]posiciones = juego.posicionesAleatorias();		
+		tablero.colocarMinas(posiciones);
+		
+		Casilla casilla = tablero.getCasilla(posiciones[0][0],posiciones[0][1]);
+		assertTrue(casilla.getMina() == true);
 	}
 	
 	@Test
 	public void testPosicionesAleatorias() {
-		int[][] toReturn = new int[10][2];
 		
-		toReturn[0][0]=0;
-		toReturn[0][1]=0;
 		
-		assertTrue(toReturn[0][0]>=0);
-		assertTrue(toReturn[0][0]<tablero.getNumFilas());
-		assertTrue(toReturn[0][1]<tablero.getNumCols());
-		assertTrue(toReturn[0][1]>=0);
+		int[][] posiciones = new int[juego.getNumMinas()][2];
+		
+		Random r = new Random();		
+		for (int i = 0; i < posiciones.length; i++) { 
+        		posiciones[i][0]=r.nextInt(tablero.getNumFilas());
+        		posiciones[i][1]=r.nextInt(tablero.getNumCols());
+        		assertTrue(posiciones[i][0]>=0);
+        		assertTrue(posiciones[i][0]<tablero.getNumFilas());
+        		assertTrue(posiciones[i][1]<tablero.getNumCols());
+        		assertTrue(posiciones[i][1]>=0);
+        }
+		
+	}
+	
+	@Test
+	public void testGetNumMinas() {
+		assertTrue(juego.getNumMinas() == 10);
 	}
 	
 

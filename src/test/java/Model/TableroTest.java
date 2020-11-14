@@ -44,17 +44,15 @@ public class TableroTest {
 		
 		tablero.colocarMinas(posiciones);
 		
-		for (int i = 0; i < posiciones.length; i++) { 
-        	for (int j = 0; j < posiciones[i].length; j++) {
-        		Casilla auxCasilla = tablero.getCasilla(i,j);
-        		assertTrue(auxCasilla.getMina()==true);
-        	}
+		for (int i = 0; i < posiciones.length; i++) {
+    		Casilla auxCasilla = tablero.getCasilla(posiciones[i][0],posiciones[i][1]);
+    		assertEquals(auxCasilla.getMina(),true);
         }
 	}
 	
 	
 	private int[][] posicionesAleatoriasTablero() {
-		int posiciones[][] = new int[9][2];
+		int posiciones[][] = new int[10][2];
 		
 		posiciones[0][0] = 0;
 		posiciones[0][1] = 0;
@@ -83,6 +81,9 @@ public class TableroTest {
 		posiciones[8][0] = 8;
 		posiciones[8][1] = 8;
 
+		posiciones[9][0] = 6;
+		posiciones[9][1] = 7;
+		
 		return posiciones;
 	}
 }
