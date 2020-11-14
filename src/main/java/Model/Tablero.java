@@ -23,7 +23,12 @@ public class Tablero {
   public int getNumFilas() {
 	return this.numFilas;
   }
+  
   public int getNumCols() {
 	return this.numCols;
+  }
+  
+  public Casilla getCasilla(Integer _fila, Integer _columna) {
+	return this.casillas[_fila][_columna];
   }
 }

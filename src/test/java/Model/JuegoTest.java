@@ -7,8 +7,15 @@ import org.junit.Test;
 public class JuegoTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testIniciarJuego() {
+		Juego juego = new Juego();
+		juego.iniciarJuego(9,9);
+		
+		Tablero tablero = juego.getTablero();		
+		Tablero tableroComparar = new Tablero(9,9);
+		
+		assertEquals(tablero,tableroComparar);
+		tableroComparar.initBoard();
 	}
 
 }
