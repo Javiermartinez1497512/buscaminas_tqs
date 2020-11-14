@@ -47,5 +47,9 @@ public class Casilla {
   public void setMarcada(Boolean _marcada) {
 	  this.marcada = _marcada;
   }		
+  
+  public int numVecinos(Integer _filas, Integer _columnas) {
+	  return 0;
+  }
 	
 }
