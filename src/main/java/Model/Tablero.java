@@ -49,5 +49,9 @@ public class Tablero {
     Casilla casilla = this.casillas[numRows][numCols];
     casilla.setMarcada(false);
   }
+  
+  public void abrirCasilla(Integer _fila, Integer _columna) {
+	  
+  }
 }
 

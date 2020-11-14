@@ -2,14 +2,20 @@ package Model;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TableroTest {
+	Tablero tablero;
+	
+	@Before
+	public void setUp() throws Exception{
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+	}
 
 	@Test
 	public void testInitBoard() {
-		Tablero tablero = new Tablero(9,9);
-		tablero.initBoard();
 		
 		Casilla casilla1 = tablero.getCasilla(0, 0);
 		assertTrue(casilla1.getAbierta() == false);
@@ -29,17 +35,13 @@ public class TableroTest {
 	}
 
 	@Test
-	public void testConstructor() {
-		Tablero tablero = new Tablero(9,9);
-		
+	public void testConstructor() {	
 		assertTrue(tablero.getNumFilas() == 9);
 		assertTrue(tablero.getNumCols() == 9);
 	}
 	
 	@Test
 	public void testColocarMinas() {
-		Tablero tablero = new Tablero(9,9);
-		tablero.initBoard();
 		int [][] posiciones = posicionesAleatoriasTablero();
 		
 		tablero.colocarMinas(posiciones);
@@ -106,4 +108,14 @@ public class TableroTest {
 		Casilla casilla2 = new Casilla(2,2);
 		assertEquals(casilla2.getMarcada(),false);
 	}
+	
+	@Test
+	public void testAbrirCasilla() {
+		Casilla casilla = new Casilla(1,1);
+		assertEquals(casilla.getAbierta(),false);
+		casilla.setAbierta(true);
+		assertEquals(casilla.getAbierta(),true);
+	}
+	
+	
 }

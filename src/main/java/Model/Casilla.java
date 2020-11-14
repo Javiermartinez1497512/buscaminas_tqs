@@ -19,6 +19,10 @@ public class Casilla {
   public boolean getAbierta() {
 	  return this.abierta;
   }
+  
+  public void setAbierta(Boolean _abierta) {
+	  this.abierta = _abierta;
+  }
 	
   public int getColumna() {
 	  return this.columna;
