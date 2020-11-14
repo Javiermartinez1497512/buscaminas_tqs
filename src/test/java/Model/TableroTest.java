@@ -13,15 +13,19 @@ public class TableroTest {
 		
 		Casilla casilla1 = tablero.getCasilla(0, 0);
 		assertTrue(casilla1.getAbierta() == false);
+		assertTrue(casilla1.getMina() == false);	
 		
 		Casilla casilla2 = tablero.getCasilla(8, 8);
 		assertTrue(casilla2.getAbierta() == false);
+		assertTrue(casilla2.getMina() == false);	
 		
 		Casilla casilla3 = tablero.getCasilla(4, 4);
 		assertTrue(casilla3.getAbierta() == false);
+		assertTrue(casilla3.getMina() == false);	
 		
 		Casilla casilla4 = tablero.getCasilla(3, 4);
 		assertTrue(casilla4.getAbierta() == false);		
+		assertTrue(casilla4.getMina() == false);	
 	}
 
 	@Test
@@ -33,11 +37,52 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void testInicializarMinas() {
+	public void testColocarMinas() {
 		Tablero tablero = new Tablero(9,9);
 		tablero.initBoard();
+		int [][] posiciones = posicionesAleatoriasTablero();
 		
-		Casilla casilla1 = tablero.getCasilla(0, 0);
-		assertTrue(casilla1.getMina() == false);	
+		tablero.colocarMinas(posiciones);
+		
+		for (int i = 0; i < posiciones.length; i++) { 
+        	for (int j = 0; j < posiciones[i].length; j++) {
+        		Casilla auxCasilla = tablero.getCasilla(i,j);
+        		assertTrue(auxCasilla.getMina()==true);
+        	}
+        }
+	}
+	
+	
+	private int[][] posicionesAleatoriasTablero() {
+		int posiciones[][] = new int[9][2];
+		
+		posiciones[0][0] = 0;
+		posiciones[0][1] = 0;
+		
+		posiciones[1][0] = 0;
+		posiciones[1][1] = 1;
+		
+		posiciones[2][0] = 1;
+		posiciones[2][1] = 2;
+		
+		posiciones[3][0] = 4;
+		posiciones[3][1] = 4;
+		
+		posiciones[4][0] = 6;
+		posiciones[4][1] = 4;
+		
+		posiciones[5][0] = 2;
+		posiciones[5][1] = 3;
+		
+		posiciones[6][0] = 7;
+		posiciones[6][1] = 7;
+		
+		posiciones[7][0] = 3;
+		posiciones[7][1] = 5;
+		
+		posiciones[8][0] = 8;
+		posiciones[8][1] = 8;
+
+		return posiciones;
 	}
 }

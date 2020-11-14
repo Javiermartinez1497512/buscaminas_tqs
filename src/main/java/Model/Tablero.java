@@ -21,6 +21,10 @@ public class Tablero {
     }
   }
   
+  public void colocarMinas(int[][] _posicionesMinas){
+	  
+  }
+  
   public int getNumFilas() {
 	return this.numFilas;
   }
