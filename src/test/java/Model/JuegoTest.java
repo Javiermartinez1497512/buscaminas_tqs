@@ -103,7 +103,22 @@ public class JuegoTest {
 		tablero.marcarCasilla(5,5);	
 		juego.actualizarMarcas();
 		assertTrue(juego.getMarcadas() == 2);
-		tablero.marcarCasilla(5,5);	
+	}
+	
+	@Test
+	public void testActualizarMinasAbiertas() {
+		juego.actualizarMinasAbiertas();
+		assertTrue(juego.getMinasAbiertas() == false);
+		
+		Casilla casilla1 = tablero.getCasilla(0,0);
+		casilla1.setMina(true);
+		casilla1.setAbierta(true);
+		
+		juego.actualizarMinasAbiertas();
+		assertTrue(juego.getMinasAbiertas() == true);
+
+
+		
 	}
 	
 	
