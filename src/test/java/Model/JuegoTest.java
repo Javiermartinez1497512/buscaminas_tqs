@@ -69,4 +69,12 @@ public class JuegoTest {
 		assertTrue(juego.getMarcadas() < juego.getNumMinas());
 	}
 
+	@Test
+	public void testAbrirCasilla() {
+		Casilla casilla = tablero.getCasilla(0,0);
+		assertEquals(casilla.getAbierta(),false);
+		
+		tablero.abrirCasilla(0,0);
+	}
+	
 }
