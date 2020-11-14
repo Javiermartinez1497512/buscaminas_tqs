@@ -37,6 +37,7 @@ public class VistaJuego extends JPanel {
 	        tablero[x][y] = new JButton();
 	        tablero[x][y].setName("Casilla");
 	        tablero[x][y].setPreferredSize(new Dimension(32,32));
+	        tablero[x][y].addMouseListener((MouseListener) this.getControladorJuego());
 	        paneltablero.add(tablero[x][y]);
 	      }
 	    }
