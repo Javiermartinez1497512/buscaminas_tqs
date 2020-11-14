@@ -49,7 +49,29 @@ public class Casilla {
   }		
   
   public int numVecinos(Integer _filas, Integer _columnas) {
-	  return 0;
+    int vecinos = 8; // Por defecto tiene 8 vecions
+
+    if((this.fila-1 < 0) || (this.fila+1 >= _filas)) {
+      if((this.columna-1 < 0) || (this.columna+1 >= _columnas)) {
+    	  // Esta fuera de los limites por lo tanto nos encontramos en una esquina
+    	  vecinos=3; 
+      }else {
+    	  //Entendemos que se encuentra en uno de los bordes
+    	  vecinos = 5; 
+      }
+    }
+    
+    if((this.columna-1 < 0) || (this.columna+1 >= _columnas)) {
+      if((this.fila-1 < 0) || (this.fila+1 >= _filas)) {
+    	  // Esta fuera de los limites por lo tanto nos encontramos en una esquina
+    	  vecinos=3;
+      }else {
+    	//Entendemos que se encuentra en uno de los bordes
+    	vecinos = 5;
+      }
+    }
+
+    return vecinos;
   }
 	
 }
