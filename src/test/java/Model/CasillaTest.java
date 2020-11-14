@@ -13,6 +13,7 @@ public class CasillaTest {
 		assertTrue(casilla.getFila() == 0);
 		assertTrue(casilla.getColumna() == 0);
 		assertTrue(casilla.getAbierta() == false);
+		assertTrue(casilla.getMina() == false);
 
 	}
 }

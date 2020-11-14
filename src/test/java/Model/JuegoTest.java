@@ -35,8 +35,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void testPosicionesAleatorias() {
-		
+	public void testPosicionesAleatorias() {		
 		
 		int[][] posiciones = new int[juego.getNumMinas()][2];
 		
@@ -55,6 +54,12 @@ public class JuegoTest {
 	@Test
 	public void testGetNumMinas() {
 		assertTrue(juego.getNumMinas() == 10);
+	}
+	
+	@Test
+	public void testSetNumMinas() {
+		juego.setNumMinas(5);
+		assertTrue(juego.getNumMinas() == 5);
 	}
 	
 
