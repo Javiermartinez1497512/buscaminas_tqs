@@ -34,9 +34,11 @@ public class ControladorJuego implements MouseListener{
 
 		int fila = selectedBtn.getX() / 32;
 		int columna = selectedBtn.getY() / 32;
-
+		System.out.println("Click casilla: "+fila+","+columna);
+		
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			System.out.println("Abrir casilla");
+			juego.abrirCasilla(fila, columna);
 		} else if (e.getButton() == MouseEvent.BUTTON3) {
 			System.out.println("Marcar casilla");
 		}
