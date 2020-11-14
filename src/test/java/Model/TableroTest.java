@@ -30,6 +30,14 @@ public class TableroTest {
 		
 		assertTrue(tablero.getNumFilas() == 9);
 		assertTrue(tablero.getNumCols() == 9);
-
+	}
+	
+	@Test
+	public void testInicializarMinas() {
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		
+		Casilla casilla1 = tablero.getCasilla(0, 0);
+		assertTrue(casilla1.getMina() == false);	
 	}
 }

@@ -20,6 +20,7 @@ public class Tablero {
       }
     }
   }
+  
   public int getNumFilas() {
 	return this.numFilas;
   }
