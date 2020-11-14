@@ -40,5 +40,14 @@ public class Tablero {
   public Casilla getCasilla(Integer _fila, Integer _columna) {
 	return this.casillas[_fila][_columna];
   }
+  
+  public void marcarCasilla(int numRows, int numCols){
+    Casilla casilla = this.casillas[numRows][numCols];
+    casilla.setMarcada(true);
+  }
+  public void desmarcarCasilla(int numRows, int numCols){
+    Casilla casilla = this.casillas[numRows][numCols];
+    casilla.setMarcada(false);
+  }
 }
 

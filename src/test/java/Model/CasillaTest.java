@@ -14,6 +14,6 @@ public class CasillaTest {
 		assertTrue(casilla.getColumna() == 0);
 		assertTrue(casilla.getAbierta() == false);
 		assertTrue(casilla.getMina() == false);
-
+		assertTrue(casilla.getMarcada() == false);		
 	}
 }

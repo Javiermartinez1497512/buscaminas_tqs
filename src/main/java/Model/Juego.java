@@ -11,6 +11,9 @@ public class Juego {
 	public void iniciarJuego(Integer _fila, Integer _columna) {
 		this.tablero = new Tablero(_fila,_columna);
 		this.tablero.initBoard();
+		
+		int[][] posiciones = this.posicionesAleatorias();
+		tablero.colocarMinas(posiciones);		
 	}
 	
 	public Tablero getTablero() {return this.tablero;}	

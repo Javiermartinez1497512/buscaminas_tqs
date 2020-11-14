@@ -86,4 +86,24 @@ public class TableroTest {
 		
 		return posiciones;
 	}
+	
+	@Test
+	public void testMarcarCasilla() {
+		Casilla casilla = new Casilla(1,1);
+		casilla.setMarcada(true);
+		assertEquals(casilla.getMarcada(),true);
+		
+		Casilla casilla2 = new Casilla(2,2);
+		assertEquals(casilla2.getMarcada(),false);
+	}
+	
+	@Test
+	public void testDesmarcarCasilla() {
+		Casilla casilla = new Casilla(1,1);
+		casilla.setMarcada(false);
+		assertEquals(casilla.getMarcada(),false);
+		
+		Casilla casilla2 = new Casilla(2,2);
+		assertEquals(casilla2.getMarcada(),false);
+	}
 }

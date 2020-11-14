@@ -5,6 +5,7 @@ public class Casilla {
   private Boolean mina;
   private Integer fila;
   private Integer columna;
+  private Boolean marcada;
 
   public Casilla(Integer _fila, Integer _col ) {
     fila = _fila;
@@ -12,6 +13,7 @@ public class Casilla {
     
     abierta = false;
     mina = false;
+    marcada = false;
   }
 
   public boolean getAbierta() {
@@ -33,6 +35,13 @@ public class Casilla {
   public void setMina(Boolean _mina) {
 	  this.mina = _mina;
   }
-		
+  
+  public boolean getMarcada() {
+	  return this.marcada;
+  }
+  
+  public void setMarcada(Boolean _marcada) {
+	  this.marcada = _marcada;
+  }		
 	
 }
