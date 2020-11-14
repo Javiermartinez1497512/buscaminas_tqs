@@ -67,4 +67,11 @@ public class Juego {
 		
 		this.setMarcadas(numMarcadas);
 	}
+	
+	public void abrirCasilla(Integer _fila, Integer _columna) {
+		Casilla casilla = tablero.getCasilla(_fila, _columna);
+		if(!casilla.getAbierta()) {
+			tablero.abrirCasilla(_fila, _columna);
+		}
+	}
 }

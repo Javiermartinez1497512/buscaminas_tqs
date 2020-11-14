@@ -52,7 +52,11 @@ public class Tablero {
   
   public void abrirCasilla(Integer _fila, Integer _columna) {
 	  Casilla casilla = this.casillas[_fila][_columna];
-	  casilla.setAbierta(true);
+	  if(!casilla.getAbierta()) {
+		  if(!casilla.getMarcada()) {
+			  casilla.setAbierta(true);
+		  }		  
+	  }	  
   }
 }
 

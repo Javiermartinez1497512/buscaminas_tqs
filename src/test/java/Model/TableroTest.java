@@ -10,7 +10,7 @@ public class TableroTest {
 	
 	@Before
 	public void setUp() throws Exception{
-		Tablero tablero = new Tablero(9,9);
+		tablero = new Tablero(9,9);
 		tablero.initBoard();
 	}
 
@@ -113,6 +113,7 @@ public class TableroTest {
 	public void testAbrirCasilla() {
 		Casilla casilla = new Casilla(1,1);
 		assertEquals(casilla.getAbierta(),false);
+		assertEquals(casilla.getMarcada(),false);
 		casilla.setAbierta(true);
 		assertEquals(casilla.getAbierta(),true);
 	}
