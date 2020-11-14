@@ -26,6 +26,8 @@ public class JuegoTest {
 		assertEquals(tablero.getNumCols(),tableroComparar.getNumCols());
 		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());
 		assertTrue(juego.getNumMinas() == 10);
+		assertTrue(juego.getMarcadas() == 0);
+
 		
 		int[][]posiciones = juego.posicionesAleatorias();		
 		tablero.colocarMinas(posiciones);
@@ -62,5 +64,9 @@ public class JuegoTest {
 		assertTrue(juego.getNumMinas() == 5);
 	}
 	
+	@Test
+	public void testMarcasDisponibles() {
+		assertTrue(juego.getMarcadas() < juego.getNumMinas());
+	}
 
 }

@@ -6,6 +6,8 @@ public class Juego {
 	
 	private Tablero tablero;
 	private Integer numMinas = 10; //Por defecto el juego incluira 10 minas
+	private Integer marcadas = 0; //Por defecto el juego empieza con 0 marcas
+
 	public Juego() {}
 	
 	public void iniciarJuego(Integer _fila, Integer _columna) {
@@ -18,10 +20,9 @@ public class Juego {
 	
 	public Tablero getTablero() {return this.tablero;}	
 	public int getNumMinas() {return this.numMinas;}
-	public void setNumMinas(Integer _numMinas) {
-		this.numMinas = _numMinas;
-	}
-	
+	public void setNumMinas(Integer _numMinas) {this.numMinas = _numMinas;}
+	public int getMarcadas() {return this.marcadas;}
+	public void setMarcadas(Integer _marcadas) {this.marcadas = _marcadas;}
 	
 	public int[][] posicionesAleatorias(){
 		int[][] posiciones = new int[this.getNumMinas()][2];
@@ -33,6 +34,15 @@ public class Juego {
 		}
 
 		return posiciones;
+	}
+	
+	public Boolean marcasDisponibles() {		
+		Boolean disponibles = false;
+		if(this.getMarcadas() < this.getNumMinas()) {
+			disponibles = true;
+		}
+		
+		return disponibles;
 	}
  
 }
