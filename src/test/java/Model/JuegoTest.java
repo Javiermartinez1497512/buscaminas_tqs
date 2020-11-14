@@ -77,4 +77,35 @@ public class JuegoTest {
 		tablero.abrirCasilla(0,0);
 	}
 	
+	
+	@Test
+	public void testMarcarDesmarcarCasilla() {
+		//Caso para desmarcar
+		Casilla casilla = tablero.getCasilla(0,0);
+		casilla.setMarcada(true);
+		assertEquals(casilla.getMarcada(),true);
+		tablero.desmarcarCasilla(0,0);
+		assertEquals(casilla.getMarcada(),false);
+		
+		//Caso para marcar
+		Casilla casilla2 = tablero.getCasilla(2,2);
+		assertEquals(juego.marcasDisponibles(),true);
+		assertEquals(casilla2.getMarcada(),false);
+		tablero.marcarCasilla(2, 2);
+		assertEquals(casilla2.getMarcada(),true);
+	}
+	
+	@Test
+	public void testActualizarMarcas() {
+		juego.actualizarMarcas();
+		assertTrue(juego.getMarcadas() == 0);
+		tablero.marcarCasilla(0,0);
+		tablero.marcarCasilla(5,5);	
+		juego.actualizarMarcas();
+		assertTrue(juego.getMarcadas() == 2);
+		tablero.marcarCasilla(5,5);	
+	}
+	
+	
+	
 }

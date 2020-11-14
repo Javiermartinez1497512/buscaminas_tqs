@@ -44,5 +44,27 @@ public class Juego {
 		
 		return disponibles;
 	}
- 
+	
+	public void marcarDesmarcarCasilla(Integer _fila, Integer _columna) {
+		Casilla casilla = tablero.getCasilla(_fila, _columna);
+		if(casilla.getMarcada()) {
+			tablero.desmarcarCasilla(_fila, _columna);
+		}else if(this.marcasDisponibles() && !casilla.getMarcada()) {
+			tablero.marcarCasilla(_fila,_columna);
+		}
+	}
+	
+	public void actualizarMarcas() {
+		int numMarcadas = 0;
+		for (int i = 0; i < tablero.getNumFilas(); i++) {
+			for (int j = 0; j < tablero.getNumCols(); j++) {
+				Casilla casilla = tablero.getCasilla(i,j);
+				if(casilla.getMarcada()) {
+					numMarcadas++;
+				}
+			}
+		}
+		
+		this.setMarcadas(numMarcadas);
+	}
 }
