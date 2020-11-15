@@ -30,7 +30,21 @@ public class Tablero {
   }
   
   public void contarMinasVecinas(int[][] _posicionesMinas) {
-	  
+	 for (int i = 0; i < _posicionesMinas.length; i++) {
+      int fila = _posicionesMinas[i][0];
+      int columna = _posicionesMinas[i][1];
+      int[][] posicionVecinos = casillas[fila][columna].getPosicionVecinos(this.numFilas, this.numCols);
+      
+      
+      for (int j = 0; j < posicionVecinos.length; j++) {
+        int filaVecino = posicionVecinos[j][0];
+        int columnaVecino = posicionVecinos[j][1];
+        if (!casillas[filaVecino][columnaVecino].getMina()) {
+        	int minasVecinas = casillas[filaVecino][columnaVecino].getMinasVecinas()+1;
+        	casillas[filaVecino][columnaVecino].setMinasVecinas(minasVecinas);
+        }
+      }  
+    }
   }
   
   public int getNumFilas() {

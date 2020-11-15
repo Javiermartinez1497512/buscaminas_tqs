@@ -58,13 +58,13 @@ public class TableroTest {
 		tablero.colocarMinas(posiciones);
 		tablero.contarMinasVecinas(posiciones);		
 		
-		Casilla casilla1 = tablero.getCasilla(0,1);
+		Casilla casilla1 = tablero.getCasilla(1,0);
 		assertEquals(casilla1.getMinasVecinas(),2);
 		
-		Casilla casilla2 = tablero.getCasilla(4,3);
+		Casilla casilla2 = tablero.getCasilla(3,4);
 		assertEquals(casilla2.getMinasVecinas(),3);
 		
-		Casilla casilla3 = tablero.getCasilla(4,7);
+		Casilla casilla3 = tablero.getCasilla(7,4);
 		assertEquals(casilla3.getMinasVecinas(),1);
 		
 		Casilla casilla4 = tablero.getCasilla(8,0);
