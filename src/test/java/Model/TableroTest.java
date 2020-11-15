@@ -56,7 +56,6 @@ public class TableroTest {
 	public void testContarMinasVecinas() {
 		int [][] posiciones = posicionesAleatoriasTablero();
 		tablero.colocarMinas(posiciones);
-		tablero.contarMinasVecinas(posiciones);		
 		
 		Casilla casilla1 = tablero.getCasilla(1,0);
 		assertEquals(casilla1.getMinasVecinas(),2);
