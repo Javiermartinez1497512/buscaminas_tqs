@@ -73,5 +73,10 @@ public class Casilla {
 
     return vecinos;
   }
+  
+  public int[][] getPosicionVecions(Integer _filas, Integer _columnas){
+    int[][] posVecinos = null;
+    return posVecinos;
+  }
 	
 }
