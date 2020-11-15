@@ -133,7 +133,7 @@ public class JuegoTest {
 		}
 		
 		juego.actualizarVictoria();
-		assertTrue(juego.getVictoria() == true);	
+		assertEquals(juego.getVictoria(),true);	
 	}
 	
 	
