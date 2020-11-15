@@ -15,9 +15,7 @@ public class ControladorJuego implements MouseListener{
 	private Juego juego;
 	
 	public ControladorJuego() {
-		this.juego =  new Juego();
-		//Iniciamos el juego con los valores por defecto 9x9 10minas
-		juego.iniciarJuego(9, 9); 
+		this.nuevoJuego();
 	}
 	
 	public void setVistaJuego(VistaJuego _vista) {
@@ -26,6 +24,12 @@ public class ControladorJuego implements MouseListener{
 	
 	public Juego getJuego() {
 		return this.juego;
+	}
+	
+	public void nuevoJuego() {
+		this.juego =  new Juego();
+		//Iniciamos el juego con los valores por defecto 9x9 10minas
+		juego.iniciarJuego(9, 9); 
 	}
 	
 	@Override
@@ -46,6 +50,7 @@ public class ControladorJuego implements MouseListener{
 		
 		juego.actualizarMarcas();
 		juego.actualizarMinasAbiertas();
+		juego.actualizarVictoria();
 		vistaJuego.actualizarVistaTablero();
     }
 

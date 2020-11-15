@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Controlador.ControladorJuego;
+import Controlador.ControladorMensaje;
 import Model.Casilla;
 import Model.Juego;
 import Model.Tablero;
@@ -96,20 +97,26 @@ public class VistaJuego extends JPanel {
 		
 		if (juegoActual.getMinasAbiertas()) {
 			VistaMensaje alerta = new VistaMensaje(ventana, this, "Has perdido!");
-			alerta.addWindowListener(new WindowAdapter() {
-				public void windowClosed(WindowEvent e) {
-					System.out.println("Entra");
-					resetBoard();
-					iniciarPartida();
-				}
-			});
+			ControladorMensaje controlador = new ControladorMensaje(this,alerta);
+			alerta.setController(controlador);
+			alerta.mostrar();
+			alerta.addWindowListener(controlador);
+			alerta.pack();
+			alerta.setVisible(true);
+		}else if(juegoActual.getVictoria()) {
+			VistaMensaje alerta = new VistaMensaje(ventana, this, "Has Ganado!");
+			ControladorMensaje controlador = new ControladorMensaje(this,alerta);
+			alerta.setController(controlador);
+			alerta.mostrar();
+			alerta.addWindowListener(controlador);
 			alerta.pack();
 			alerta.setVisible(true);
 		} 
 		
 	}
 
-	public void resetBoard() {
+	public void resetTablero() {
+		controladorJuego.nuevoJuego();
 		this.remove(paneltablero);
 		this.revalidate();
 		this.repaint();

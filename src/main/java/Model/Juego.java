@@ -107,6 +107,6 @@ public class Juego {
 			}
 		}
 		
-		this.setVictoria((casillasAbiertas == (total_casillas-this.getNumMinas())? true : false));
+		this.setVictoria((casillasAbiertas == (total_casillas-this.getNumMinas())?true : false));
 	}
 }

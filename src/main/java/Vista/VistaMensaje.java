@@ -17,32 +17,34 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import Controlador.ControladorMensaje;
+
 public class VistaMensaje extends JDialog {
 	private JLabel txtMensaje;
 	private JButton bAcceptar;
 	private VistaJuego _vistaparent;
 	private String mensaje;
 
+	private ControladorMensaje controlador;
+
 	public VistaMensaje(JFrame frame, VistaJuego _vista, String _mensajeAlerta) {
 		super(frame);
 		_vistaparent = _vista;
 		mensaje = _mensajeAlerta;
-		mostrar();
 	}
 
-	private void mostrar() {
+	public void mostrar() {
 		this.setModal(true);
 		this.setTitle("Alerta");
 		this.setLayout(new BorderLayout(10, 10));
 
-		JPanel panelDif = new JPanel(new GridLayout(1, 1, 100, 100));
 		bAcceptar = new JButton(this.mensaje);
+		bAcceptar.addMouseListener(this.controlador);
 		this.add("South", bAcceptar);
 	}
 
-	private void sendData() {
-		this.setVisible(false);
-		dispose();
+	public void setController(ControladorMensaje _controlador) {
+		controlador = _controlador;
 	}
 
 }
