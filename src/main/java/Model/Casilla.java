@@ -6,6 +6,7 @@ public class Casilla {
   private Integer fila;
   private Integer columna;
   private Boolean marcada;
+  private Integer minasVecinas;
 
   public Casilla(Integer _fila, Integer _col ) {
     fila = _fila;
@@ -14,6 +15,8 @@ public class Casilla {
     abierta = false;
     mina = false;
     marcada = false;
+    
+    minasVecinas = 0;
   }
 
   public boolean getAbierta() {
@@ -46,7 +49,15 @@ public class Casilla {
   
   public void setMarcada(Boolean _marcada) {
 	  this.marcada = _marcada;
-  }		
+  }	
+  
+  public void setMinasVecinas(Integer _vecinas) {
+	  this.minasVecinas = _vecinas;
+  }	
+  
+  public int getMinasVecinas() {
+	  return this.minasVecinas;
+  }	
   
   public int numVecinos(Integer _filas, Integer _columnas) {
     int vecinos = 8; // Por defecto tiene 8 vecions

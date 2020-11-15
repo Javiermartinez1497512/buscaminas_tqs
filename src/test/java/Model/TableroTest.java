@@ -52,6 +52,24 @@ public class TableroTest {
         }
 	}
 	
+	@Test
+	public void testContarMinasVecinas() {
+		int [][] posiciones = posicionesAleatoriasTablero();
+		tablero.colocarMinas(posiciones);
+		tablero.contarMinasVecinas(posiciones);		
+		
+		Casilla casilla1 = tablero.getCasilla(0,1);
+		assertEquals(casilla1.getMinasVecinas(),2);
+		
+		Casilla casilla2 = tablero.getCasilla(4,3);
+		assertEquals(casilla2.getMinasVecinas(),3);
+		
+		Casilla casilla3 = tablero.getCasilla(4,7);
+		assertEquals(casilla3.getMinasVecinas(),1);
+		
+		Casilla casilla4 = tablero.getCasilla(8,0);
+		assertEquals(casilla4.getMinasVecinas(),0);
+	}	
 	
 	private int[][] posicionesAleatoriasTablero() {
 		int posiciones[][] = new int[10][2];

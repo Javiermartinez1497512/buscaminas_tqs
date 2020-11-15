@@ -29,6 +29,10 @@ public class Tablero {
 	  }
   }
   
+  public void contarMinasVecinas(int[][] _posicionesMinas) {
+	  
+  }
+  
   public int getNumFilas() {
 	return this.numFilas;
   }
