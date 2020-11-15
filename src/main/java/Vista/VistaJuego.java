@@ -19,6 +19,9 @@ public class VistaJuego extends JPanel {
 	private JFrame ventana = new JFrame("BUSCAMINAS");
 	private JPanel paneltablero;
 	private JButton[][] tablero;
+	
+	private JMenuBar barraMenu;
+	private JMenuItem marcasMnu;
 
 	public VistaJuego() {
 	}
@@ -45,6 +48,8 @@ public class VistaJuego extends JPanel {
 				paneltablero.add(tablero[x][y]);
 			}
 		}
+		
+		barraMenu();
 
 		ventana.setContentPane(this);
 		ventana.setResizable(false);
@@ -113,6 +118,8 @@ public class VistaJuego extends JPanel {
 			alerta.setVisible(true);
 		} 
 		
+		actualizarMenu();
+		
 	}
 
 	public void resetTablero() {
@@ -120,5 +127,45 @@ public class VistaJuego extends JPanel {
 		this.remove(paneltablero);
 		this.revalidate();
 		this.repaint();
+	}
+	
+	public void barraMenu() {
+		barraMenu = new JMenuBar();
+		barraMenu.setFont(new Font("Arial", Font.PLAIN, 15));
+		
+		//Menu Opciones
+		JMenu menuOp = new JMenu("Juego");
+		JMenuItem facil = new JMenuItem("Facil");
+		facil.addActionListener(controladorJuego);
+		menuOp.add(facil);
+		JMenuItem medio = new JMenuItem("Medio");
+		medio.addActionListener(controladorJuego);
+		menuOp.add(medio);
+		JMenuItem dificil = new JMenuItem("Dificil");
+		dificil.addActionListener(controladorJuego);
+		menuOp.add(dificil);
+		barraMenu.add(menuOp);
+		
+		//Boton reiniciar tablero
+		JMenuItem reiniciar = new JMenuItem("Reiniciar");
+		reiniciar.addActionListener(controladorJuego);
+		barraMenu.add(reiniciar);
+		
+		//Contador Marcas
+		Juego juegoActual = controladorJuego.getJuego();
+		int marcadas = juegoActual.getMarcadas();
+		int minasMarcar = juegoActual.getNumMinas();
+		marcasMnu = new JMenuItem("Marcas: "+marcadas+" / "+minasMarcar);
+		barraMenu.add(marcasMnu);
+		
+		ventana.setJMenuBar(barraMenu);
+	}
+	
+	public void actualizarMenu() {
+		//Contador Marcas
+		Juego juegoActual = controladorJuego.getJuego();
+		int marcadas = juegoActual.getMarcadas();
+		int minasMarcar = juegoActual.getNumMinas();
+		marcasMnu.setText("Marcas: "+marcadas+" / "+minasMarcar);
 	}
 }

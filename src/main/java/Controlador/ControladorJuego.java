@@ -1,18 +1,21 @@
 package Controlador;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 
 import Model.Juego;
 import Vista.VistaJuego;
 
-public class ControladorJuego implements MouseListener{
+public class ControladorJuego implements MouseListener, ActionListener{
 	
 	private VistaJuego vistaJuego;
 	private Juego juego;
+	private Integer nivel=1; //Por defecto nivel Facil
 	
 	public ControladorJuego() {
 		this.nuevoJuego();
@@ -28,9 +31,27 @@ public class ControladorJuego implements MouseListener{
 	
 	public void nuevoJuego() {
 		this.juego =  new Juego();
-		//Iniciamos el juego con los valores por defecto 9x9 10minas
-		juego.iniciarJuego(9, 9); 
+		Integer filas=9;
+		Integer columnas=9;
+		Integer minas=10;
+		if(this.nivel==2) {
+			filas=16;
+			columnas=16;
+			minas=40;
+		}else if(this.nivel==3) {
+			filas=22;
+			columnas=22;
+			minas=99;
+		}
+		
+		juego.setNumMinas(minas);
+		juego.iniciarJuego(filas, columnas); 
+		
 	}
+	public void setNivel(Integer _nivel) {
+		this.nivel=_nivel;
+	}
+	
 	
 	@Override
   	public void mouseClicked(MouseEvent e) {
@@ -72,6 +93,21 @@ public class ControladorJuego implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		JMenuItem menu = (JMenuItem) arg0.getSource();
+		if(menu.getText()=="Facil") {
+			this.setNivel(1);
+		}else if(menu.getText()=="Medio"){
+			this.setNivel(2);
+		}else if(menu.getText()=="Dificil") {
+			this.setNivel(3);
+		}
+		
+		vistaJuego.resetTablero();
+		vistaJuego.iniciarPartida();
 	}
 
 }
