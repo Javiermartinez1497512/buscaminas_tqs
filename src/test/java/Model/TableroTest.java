@@ -132,7 +132,6 @@ public class TableroTest {
 		Casilla casilla = new Casilla(1,1);
 		assertEquals(casilla.getAbierta(),false);
 		assertEquals(casilla.getMarcada(),false);
-		assertEquals(casilla.getMina(),false);
 		casilla.setAbierta(true);
 		assertEquals(casilla.getAbierta(),true);
 		

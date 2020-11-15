@@ -85,7 +85,9 @@ public class VistaJuego extends JPanel {
 
 					} else {
 						tablero[x][y].setBackground(new java.awt.Color(152, 214, 87));
-						tablero[x][y].setText("1");
+						if(_casilla.getMinasVecinas()!= 0) {
+							tablero[x][y].setText(""+_casilla.getMinasVecinas());
+						}
 
 					}
 				}

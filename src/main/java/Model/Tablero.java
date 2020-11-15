@@ -27,7 +27,7 @@ public class Tablero {
 			int columna = _posicionesMinas[i][1];
 			casillas[fila][columna].setMina(true);
 		}
-		
+
 		contarMinasVecinas(_posicionesMinas);
 	}
 
@@ -74,20 +74,18 @@ public class Tablero {
 		Casilla casilla = this.casillas[_fila][_columna];
 		if (!casilla.getAbierta()) {
 			if (!casilla.getMarcada()) {
-				if (!casilla.getMina()) {
-					casilla.setAbierta(true);
+				casilla.setAbierta(true);
+				if (casilla.getMinasVecinas() == 0 && !casilla.getMina()) {
+					int[][] posicionVecions = casilla.getPosicionVecinos(this.numFilas, this.numCols);
 
-					if (casilla.getMinasVecinas() == 0 && !casilla.getMina()) {
-						int[][] posicionVecions = casilla.getPosicionVecinos(this.numFilas, this.numCols);
+					for (int j = 0; j < posicionVecions.length; j++) {
+						int filaVecino = posicionVecions[j][0];
+						int columnaVecino = posicionVecions[j][1];
 
-						for (int j = 0; j < posicionVecions.length; j++) {
-							int filaVecino = posicionVecions[j][0];
-							int columnaVecino = posicionVecions[j][1];
-
-							this.abrirCasilla(filaVecino, columnaVecino);
-						}
+						this.abrirCasilla(filaVecino, columnaVecino);
 					}
 				}
+
 			}
 		}
 	}
