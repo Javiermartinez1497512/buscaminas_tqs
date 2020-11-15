@@ -74,8 +74,24 @@ public class Casilla {
     return vecinos;
   }
   
-  public int[][] getPosicionVecions(Integer _filas, Integer _columnas){
-    int[][] posVecinos = null;
+  public int[][] getPosicionVecinos(Integer _filas, Integer _columnas){
+    int vecinos = this.numVecinos(_filas, _columnas);
+    int posVecinos[][] = new int[vecinos][2];
+    
+    int fila = this.fila;
+    int columna = this.columna;
+    int i=0;
+
+    //Comprobaciones para ver que la casilla vecina no se encuentra fuera del tablero
+    if ((fila-1 >= 0) && (columna-1>=0)) { posVecinos[i][0] = fila-1; posVecinos[i][1] = columna-1; i++; }
+    if (fila-1 >= 0) { posVecinos[i][0] = fila-1; posVecinos[i][1] = columna; i++; }
+    if ((fila-1 >= 0) && (columna+1<_columnas)) { posVecinos[i][0] = fila-1; posVecinos[i][1] = columna+1; i++; }
+    if (columna+1 < _columnas) { posVecinos[i][0] = fila; posVecinos[i][1] = columna+1; i++; }
+    if ((fila+1 < _filas) && (columna+1 < _columnas)) { posVecinos[i][0] = fila+1; posVecinos[i][1] = columna+1; i++; }
+    if (fila+1 < _filas) { posVecinos[i][0] = fila+1; posVecinos[i][1] = columna; i++; }
+    if ((fila+1 < _filas) && (columna-1 >= 0)) { posVecinos[i][0] = fila+1; posVecinos[i][1] = columna-1; i++; }
+    if (columna-1 >= 0) { posVecinos[i][0] = fila; posVecinos[i][1] = columna-1; i++; }
+
     return posVecinos;
   }
 	
