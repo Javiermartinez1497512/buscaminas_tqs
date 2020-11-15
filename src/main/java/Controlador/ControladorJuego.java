@@ -51,6 +51,9 @@ public class ControladorJuego implements MouseListener, ActionListener{
 	public void setNivel(Integer _nivel) {
 		this.nivel=_nivel;
 	}
+	public int getNivel() {
+		return this.nivel;
+	}
 	
 	
 	@Override
