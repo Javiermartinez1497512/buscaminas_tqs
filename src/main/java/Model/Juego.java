@@ -8,6 +8,7 @@ public class Juego {
 	private Integer numMinas = 10; //Por defecto el juego incluira 10 minas
 	private Integer marcadas = 0; //Por defecto el juego empieza con 0 marcas
 	private Boolean minasAbiertas = false; // Por defecto el juego empieza sin minas abiertas
+	private Boolean victoria = false; // Por defecto el juego empieza sin victoria
 
 	public Juego() {}
 	
@@ -26,6 +27,8 @@ public class Juego {
 	public void setMarcadas(Integer _marcadas) {this.marcadas = _marcadas;}
 	public Boolean getMinasAbiertas() {return this.minasAbiertas;}
 	public void setMinasAbiertas(Boolean _minaAbierta) {this.minasAbiertas = _minaAbierta;}
+	public Boolean getVictoria() {return this.victoria;}
+	public void setVictoria(Boolean _victoria) {this.victoria = _victoria;}
 	
 	public int[][] posicionesAleatorias(){
 		int[][] posiciones = new int[this.getNumMinas()][2];
@@ -90,5 +93,20 @@ public class Juego {
 		}
 		
 		this.setMinasAbiertas((minaAbiertas>0)? true : false);
+	}
+	
+	public void actualizarVictoria() {
+		int casillasAbiertas = 0;
+		int total_casillas = tablero.getNumFilas() * tablero.getNumCols();
+		for (int i = 0; i < tablero.getNumFilas(); i++) {
+			for (int j = 0; j < tablero.getNumCols(); j++) {
+				Casilla casilla = tablero.getCasilla(i,j);
+				if(casilla.getAbierta()) {
+					casillasAbiertas++;
+				}
+			}
+		}
+		
+		this.setVictoria((casillasAbiertas == (total_casillas-this.getNumMinas())? true : false));
 	}
 }

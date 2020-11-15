@@ -1,6 +1,7 @@
 package Vista;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -62,23 +63,53 @@ public class VistaJuego extends JPanel {
 	public void actualizarVistaTablero() {
 		Juego juegoActual = controladorJuego.getJuego();
 		Tablero tableroActual = juegoActual.getTablero();
-		
+	
 		for (int x = 0; x < tableroActual.getNumFilas(); x++) {
 			for (int y = 0; y < tableroActual.getNumCols(); y++) {
 				Casilla _casilla = tableroActual.getCasilla(y, x);
+				// Reset de la casilla
 				tablero[x][y].setBackground(new JButton().getBackground());
+				tablero[x][y].setText("");
+				tablero[x][y].setFont(new Font("Tahoma", Font.BOLD, 14));
+				tablero[x][y].setMargin(new Insets(0, 0, 0, 0));
+
 				if (!_casilla.getAbierta()) {
 					if (_casilla.getMarcada()) {
-						tablero[x][y].setBackground(Color.blue);
+						tablero[x][y].setBackground(new java.awt.Color(96, 150, 244));
+						tablero[x][y].setText("?");
 					}
 				} else {
 					if (_casilla.getMina()) {
-						tablero[x][y].setBackground(Color.red);
+						tablero[x][y].setBackground(new java.awt.Color(245, 90, 59));
+						tablero[x][y].setText("X");
+
 					} else {
-						tablero[x][y].setBackground(Color.yellow);
+						tablero[x][y].setBackground(new java.awt.Color(152, 214, 87));
+						tablero[x][y].setText("1");
+
 					}
 				}
 			}
 		}
+		
+		if (juegoActual.getMinasAbiertas()) {
+			VistaMensaje alerta = new VistaMensaje(ventana, this, "Has perdido!");
+			alerta.addWindowListener(new WindowAdapter() {
+				public void windowClosed(WindowEvent e) {
+					System.out.println("Entra");
+					resetBoard();
+					iniciarPartida();
+				}
+			});
+			alerta.pack();
+			alerta.setVisible(true);
+		} 
+		
+	}
+
+	public void resetBoard() {
+		this.remove(paneltablero);
+		this.revalidate();
+		this.repaint();
 	}
 }

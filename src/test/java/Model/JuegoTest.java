@@ -115,10 +115,25 @@ public class JuegoTest {
 		casilla1.setAbierta(true);
 		
 		juego.actualizarMinasAbiertas();
-		assertTrue(juego.getMinasAbiertas() == true);
-
-
+		assertTrue(juego.getMinasAbiertas() == true);	
+	}
+	
+	@Test
+	public void testActualizarVictoria() {
+		juego.actualizarVictoria();
+		assertEquals(juego.getVictoria(),false);
 		
+		for (int x = 0; x < tablero.getNumFilas(); x++) {
+			for (int y = 0; y < tablero.getNumCols(); y++) {
+				Casilla _casilla = tablero.getCasilla(x,y);
+				if(!_casilla.getMina()) {
+					tablero.abrirCasilla(x,y);
+				}
+			}
+		}
+		
+		juego.actualizarVictoria();
+		assertTrue(juego.getVictoria() == true);	
 	}
 	
 	
