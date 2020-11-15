@@ -75,21 +75,21 @@ public class TableroTest {
 
 	@Test
 	public void testMarcarCasilla() {
-		Casilla casilla = new Casilla(1,1);
-		casilla.setMarcada(true);
+		tablero.marcarCasilla(1,1);
+		Casilla casilla = tablero.getCasilla(1,1);
 		assertEquals(casilla.getMarcada(),true);
 		
-		Casilla casilla2 = new Casilla(2,2);
+		Casilla casilla2 = tablero.getCasilla(2,2);
 		assertEquals(casilla2.getMarcada(),false);
 	}
 	
 	@Test
 	public void testDesmarcarCasilla() {
-		Casilla casilla = new Casilla(1,1);
-		casilla.setMarcada(false);
+		tablero.desmarcarCasilla(1,1);
+		Casilla casilla = tablero.getCasilla(1,1);
 		assertEquals(casilla.getMarcada(),false);
 		
-		Casilla casilla2 = new Casilla(2,2);
+		Casilla casilla2 = tablero.getCasilla(2,2);
 		assertEquals(casilla2.getMarcada(),false);
 	}
 	
@@ -105,10 +105,9 @@ public class TableroTest {
 		for (int i = 0; i < posiciones.length; i++) {
     		Casilla auxCasilla = tablero.getCasilla(posiciones[i][0],posiciones[i][1]);
     		
-    		assertEquals(auxCasilla.getAbierta(),false);
     		assertEquals(auxCasilla.getMarcada(),false);
     		assertEquals(auxCasilla.getMina(),false);
-    		auxCasilla.setAbierta(true);
+    		tablero.abrirCasilla(posiciones[i][0],posiciones[i][1]);
     		assertEquals(auxCasilla.getAbierta(),true);
 		}
 	}
