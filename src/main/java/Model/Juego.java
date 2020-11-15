@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Juego {
 	
-	private Tablero tablero;
+	protected Tablero tablero;
 	private Integer numMinas = 10; //Por defecto el juego incluira 10 minas
 	private Integer marcadas = 0; //Por defecto el juego empieza con 0 marcas
 	private Boolean minasAbiertas = false; // Por defecto el juego empieza sin minas abiertas
@@ -107,6 +107,6 @@ public class Juego {
 			}
 		}
 		
-		this.setVictoria((casillasAbiertas == (total_casillas-this.getNumMinas())?true : false));
+		this.setVictoria((casillasAbiertas == (total_casillas-this.getNumMinas())? true : false));
 	}
 }

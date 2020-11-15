@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JuegoTest {
-	Juego juego;
+	JuegoMock juego;
 	Tablero tablero;
 	
 	@Before
 	public void setUp() throws Exception{
-		juego = new Juego();
+		juego = new JuegoMock();
 		juego.iniciarJuego(9,9);
 		
 		tablero = juego.getTablero();	
@@ -27,9 +27,8 @@ public class JuegoTest {
 		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());
 		assertTrue(juego.getNumMinas() == 10);
 		assertTrue(juego.getMarcadas() == 0);
-
 		
-		int[][]posiciones = juego.posicionesAleatorias();		
+		int [][] posiciones = juego.posicionesAleatoriasTablero();
 		tablero.colocarMinas(posiciones);
 		
 		Casilla casilla = tablero.getCasilla(posiciones[0][0],posiciones[0][1]);
@@ -39,12 +38,8 @@ public class JuegoTest {
 	@Test
 	public void testPosicionesAleatorias() {		
 		
-		int[][] posiciones = new int[juego.getNumMinas()][2];
-		
-		Random r = new Random();		
+		int [][] posiciones = juego.posicionesAleatoriasTablero();
 		for (int i = 0; i < posiciones.length; i++) { 
-        		posiciones[i][0]=r.nextInt(tablero.getNumFilas());
-        		posiciones[i][1]=r.nextInt(tablero.getNumCols());
         		assertTrue(posiciones[i][0]>=0);
         		assertTrue(posiciones[i][0]<tablero.getNumFilas());
         		assertTrue(posiciones[i][1]<tablero.getNumCols());
@@ -74,7 +69,7 @@ public class JuegoTest {
 		Casilla casilla = tablero.getCasilla(0,0);
 		assertEquals(casilla.getAbierta(),false);
 		
-		tablero.abrirCasilla(0,0);
+		juego.abrirCasilla(0,0);
 	}
 	
 	
@@ -84,14 +79,14 @@ public class JuegoTest {
 		Casilla casilla = tablero.getCasilla(0,0);
 		casilla.setMarcada(true);
 		assertEquals(casilla.getMarcada(),true);
-		tablero.desmarcarCasilla(0,0);
+		juego.marcarDesmarcarCasilla(0,0);
 		assertEquals(casilla.getMarcada(),false);
 		
 		//Caso para marcar
 		Casilla casilla2 = tablero.getCasilla(2,2);
 		assertEquals(juego.marcasDisponibles(),true);
 		assertEquals(casilla2.getMarcada(),false);
-		tablero.marcarCasilla(2, 2);
+		juego.marcarDesmarcarCasilla(2, 2);
 		assertEquals(casilla2.getMarcada(),true);
 	}
 	
@@ -120,20 +115,22 @@ public class JuegoTest {
 	
 	@Test
 	public void testActualizarVictoria() {
-		juego.actualizarVictoria();
-		assertEquals(juego.getVictoria(),false);
 		
-		for (int x = 0; x < tablero.getNumFilas(); x++) {
-			for (int y = 0; y < tablero.getNumCols(); y++) {
-				Casilla _casilla = tablero.getCasilla(x,y);
-				if(!_casilla.getMina()) {
-					tablero.abrirCasilla(x,y);
+		JuegoMock juegoMock = new JuegoMock();
+		juegoMock.iniciarJuegoSinMinas(9,9);
+		juego.actualizarVictoria();
+	
+		for (int i = 0; i < tablero.getNumCols(); i++) {
+			for (int j = 0; j < tablero.getNumFilas(); j++) {
+				Casilla auxCasilla = tablero.getCasilla(i,j);
+				if(!auxCasilla.getMina()) {
+					juego.abrirCasilla(i,j);
 				}
 			}
 		}
-		
 		juego.actualizarVictoria();
 		assertEquals(juego.getVictoria(),true);	
+
 	}
 	
 	
