@@ -132,8 +132,20 @@ public class TableroTest {
 		Casilla casilla = new Casilla(1,1);
 		assertEquals(casilla.getAbierta(),false);
 		assertEquals(casilla.getMarcada(),false);
+		assertEquals(casilla.getMina(),false);
 		casilla.setAbierta(true);
 		assertEquals(casilla.getAbierta(),true);
+		
+		int [][] posiciones = casilla.getPosicionVecinos(tablero.getNumFilas(), tablero.getNumFilas());
+		for (int i = 0; i < posiciones.length; i++) {
+    		Casilla auxCasilla = tablero.getCasilla(posiciones[i][0],posiciones[i][1]);
+    		
+    		assertEquals(auxCasilla.getAbierta(),false);
+    		assertEquals(auxCasilla.getMarcada(),false);
+    		assertEquals(auxCasilla.getMina(),false);
+    		auxCasilla.setAbierta(true);
+    		assertEquals(auxCasilla.getAbierta(),true);
+		}
 	}
 	
 	
