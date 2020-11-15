@@ -2,19 +2,27 @@ package Controlador;
 
 import static org.junit.Assert.*;
 
+import javax.swing.JMenuItem;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import Model.Juego;
 import Model.Tablero;
+import Vista.VistaJuego;
 
 public class ControladorJuegoTest {
 	Juego juego;
 	ControladorJuego controlador;
+	VistaJuego vistaJuego;
 	
 	@Before
 	public void setUp() throws Exception {
 		controlador = new ControladorJuego();
+		vistaJuego = new VistaJuego();
+		controlador.setVistaJuego(vistaJuego);
+		vistaJuego.setControladorJuego(controlador);
+		vistaJuego.iniciarPartida();
 	}
 
 	@Test
@@ -61,6 +69,19 @@ public class ControladorJuegoTest {
 		assertEquals(tablero3.getNumFilas(),filas);
 		assertEquals(tablero3.getNumCols(),columnas);		
 	}
-
-
+	
+	@Test
+	public void testCrearNivel() {
+		JMenuItem menuF = new JMenuItem("Facil");
+		controlador.crearNivel(menuF);
+		assertEquals(menuF.getText(),"Facil");
+		
+		JMenuItem menuM = new JMenuItem("Medio");
+		controlador.crearNivel(menuM);
+		assertEquals(menuM.getText(),"Medio");
+		
+		JMenuItem menuD = new JMenuItem("Dificil");
+		controlador.crearNivel(menuD);
+		assertEquals(menuD.getText(),"Dificil");
+	}
 }

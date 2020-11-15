@@ -101,6 +101,11 @@ public class ControladorJuego implements MouseListener, ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JMenuItem menu = (JMenuItem) arg0.getSource();
+		crearNivel(menu);
+	}
+	
+	public void crearNivel(JMenuItem _menu) {
+		JMenuItem menu = _menu;
 		if(menu.getText()=="Facil") {
 			this.setNivel(1);
 		}else if(menu.getText()=="Medio"){
