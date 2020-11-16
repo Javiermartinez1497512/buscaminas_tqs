@@ -45,7 +45,6 @@ public class JuegoTest {
         		assertTrue(posiciones[i][1]<tablero.getNumCols());
         		assertTrue(posiciones[i][1]>=0);
         }
-		
 	}
 	
 	@Test

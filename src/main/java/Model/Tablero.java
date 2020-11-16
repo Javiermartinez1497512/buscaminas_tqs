@@ -41,8 +41,8 @@ public class Tablero {
 				int filaVecino = posicionVecinos[j][0];
 				int columnaVecino = posicionVecinos[j][1];
 				if (!casillas[filaVecino][columnaVecino].getMina()) {
-					int minasVecinas = casillas[filaVecino][columnaVecino].getMinasVecinas() + 1;
-					casillas[filaVecino][columnaVecino].setMinasVecinas(minasVecinas);
+					//int minasVecinas = casillas[filaVecino][columnaVecino].getMinasVecinas() + 1;
+					casillas[filaVecino][columnaVecino].setMinasVecinas(casillas[filaVecino][columnaVecino].getMinasVecinas() + 1);
 				}
 			}
 		}

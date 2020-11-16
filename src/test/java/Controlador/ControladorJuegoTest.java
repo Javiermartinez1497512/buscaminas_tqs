@@ -28,9 +28,9 @@ public class ControladorJuegoTest {
 	@Test
 	public void testNuevoJuego() {
 		juego = new Juego();
-		
+		ControladorJuego controladorAux = new ControladorJuego();
 		// Nivel Facil
-		assertEquals(controlador.getNivel(),1);
+		assertEquals(controladorAux.getNivel(),1);
 		int filas = 9;
 		int columnas = 9;
 		int minas = 10;
@@ -42,9 +42,9 @@ public class ControladorJuegoTest {
 		assertEquals(tablero1.getNumCols(),columnas);
 		
 		// Nivel Medio
-		controlador.setNivel(2);
-		controlador.nuevoJuego();
-		assertEquals(controlador.getNivel(),2);
+		controladorAux.setNivel(2);
+		controladorAux.nuevoJuego();
+		assertEquals(controladorAux.getNivel(),2);
 		filas = 16;
 		columnas = 16;
 		minas = 40;
@@ -56,9 +56,9 @@ public class ControladorJuegoTest {
 		assertEquals(tablero2.getNumCols(),columnas);
 		
 		// Nivel Dificil
-		controlador.setNivel(3);
-		controlador.nuevoJuego();
-		assertEquals(controlador.getNivel(),3);
+		controladorAux.setNivel(3);
+		controladorAux.nuevoJuego();
+		assertEquals(controladorAux.getNivel(),3);
 		filas = 22;
 		columnas = 22;
 		minas = 99;
@@ -84,30 +84,5 @@ public class ControladorJuegoTest {
 		controlador.crearNivel(menuD);
 		assertEquals(menuD.getText(),"Dificil");
 	}
-
-	/*public void testAccionRealizar() {
-		
-		ControladorJuegoMock controlMock = new ControladorJuegoMock();
-		controlMock.nuevoJuego();
-		JuegoMock juegoMock = controlMock.getJuego();
-		
-		int fila = 0;
-		int columna = 0;
-		int accion = 1;
-		Tablero tablero = juegoMock.getTablero();
-		//Acción de abrir casilla
-		Casilla casilla = tablero.getCasilla(fila,columna);
-		controlMock.accionRealizar(fila, columna, accion);
-		assertEquals(casilla.getAbierta(),true);
-		
-		fila = 5;
-		columna = 5;
-		accion = 1;
-		controlMock.accionRealizar(fila, columna, accion);
-		Casilla casilla2 = tablero.getCasilla(fila,columna);
-		assertEquals(casilla2.getMarcada(),true);
-		controlMock.accionRealizar(fila, columna, accion);
-		assertEquals(casilla2.getMarcada(),false);
-	}*/
 
 }
