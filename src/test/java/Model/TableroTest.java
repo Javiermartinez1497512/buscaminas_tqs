@@ -95,22 +95,35 @@ public class TableroTest {
 	
 	@Test
 	public void testAbrirCasilla() {
+		//Casilla no abierta no marcada
 		Casilla casilla = new Casilla(1,1);
 		assertEquals(casilla.getAbierta(),false);
 		assertEquals(casilla.getMarcada(),false);
 		casilla.setAbierta(true);
+		tablero.abrirCasilla(1,1);
 		assertEquals(casilla.getAbierta(),true);
+		
+		// Casilla abierta 
+		Casilla casilla2 = new Casilla(2,2);
+		casilla2.setAbierta(true);
+		assertEquals(casilla2.getAbierta(),true);
+		tablero.abrirCasilla(2,2);	
+		
+		// Casilla no abierta y marcada
+		Casilla casilla3 = new Casilla(3,3);
+		assertEquals(casilla3.getAbierta(),false);
+		casilla3.setMarcada(true);
+		assertEquals(casilla3.getMarcada(),true);
+		tablero.abrirCasilla(3,3);	
 		
 		int [][] posiciones = casilla.getPosicionVecinos(tablero.getNumFilas(), tablero.getNumFilas());
 		for (int i = 0; i < posiciones.length; i++) {
     		Casilla auxCasilla = tablero.getCasilla(posiciones[i][0],posiciones[i][1]);
-    		
     		assertEquals(auxCasilla.getMarcada(),false);
     		assertEquals(auxCasilla.getMina(),false);
     		tablero.abrirCasilla(posiciones[i][0],posiciones[i][1]);
     		assertEquals(auxCasilla.getAbierta(),true);
-		}
+		}		
 	}
-	
-	
+		
 }
