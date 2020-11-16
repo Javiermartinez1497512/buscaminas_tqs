@@ -62,22 +62,29 @@ public class ControladorJuego implements MouseListener, ActionListener{
 
 		int fila = selectedBtn.getX() / 32;
 		int columna = selectedBtn.getY() / 32;
-		//System.out.println("Click casilla: "+fila+","+columna);
 		
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			//System.out.println("Abrir casilla");
-			juego.abrirCasilla(fila, columna);
-		} else if (e.getButton() == MouseEvent.BUTTON3) {
-			//System.out.println("Marcar casilla");
-			juego.marcarDesmarcarCasilla(fila, columna);
+		if (e.getButton() == MouseEvent.BUTTON1 || e.getButton() == MouseEvent.BUTTON3 ) {
+			this.accionRealizar(fila, columna, e.getButton());
 		}
 		
+		this.actualizarJuego();
+    }
+
+	
+	public void accionRealizar(int fila, int columna, int accion) {
+		if (accion == MouseEvent.BUTTON1) {
+			juego.abrirCasilla(fila, columna);
+		} else if (accion == MouseEvent.BUTTON3) {
+			juego.marcarDesmarcarCasilla(fila, columna);
+		}
+	}
+	
+	public void actualizarJuego() {
 		juego.actualizarMarcas();
 		juego.actualizarMinasAbiertas();
 		juego.actualizarVictoria();
 		vistaJuego.actualizarVistaTablero();
-    }
-
+	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 

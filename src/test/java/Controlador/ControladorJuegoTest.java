@@ -84,4 +84,33 @@ public class ControladorJuegoTest {
 		controlador.crearNivel(menuD);
 		assertEquals(menuD.getText(),"Dificil");
 	}
+
+	/*public void testAccionRealizar() {
+		
+		ControladorJuegoMock controlMock = new ControladorJuegoMock();
+		controlMock.nuevoJuego();
+		JuegoMock juegoMock = controlMock.getJuego();
+		
+		int fila = 0;
+		int columna = 0;
+		int accion = 1;
+		Tablero tablero = juegoMock.getTablero();
+		//Acción de abrir casilla
+		Casilla casilla = tablero.getCasilla(fila,columna);
+		controlMock.accionRealizar(fila, columna, accion);
+		assertEquals(casilla.getAbierta(),true);
+		
+		fila = 5;
+		columna = 5;
+		accion = 1;
+		controlMock.accionRealizar(fila, columna, accion);
+		Casilla casilla2 = tablero.getCasilla(fila,columna);
+		assertEquals(casilla2.getMarcada(),true);
+		controlMock.accionRealizar(fila, columna, accion);
+		assertEquals(casilla2.getMarcada(),false);
+
+
+		
+	}*/
+
 }
