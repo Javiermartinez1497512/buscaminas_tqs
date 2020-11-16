@@ -108,9 +108,6 @@ public class ControladorJuegoTest {
 		assertEquals(casilla2.getMarcada(),true);
 		controlMock.accionRealizar(fila, columna, accion);
 		assertEquals(casilla2.getMarcada(),false);
-
-
-		
 	}*/
 
 }

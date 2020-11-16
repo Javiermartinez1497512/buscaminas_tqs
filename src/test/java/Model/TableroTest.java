@@ -56,6 +56,12 @@ public class TableroTest {
     		Casilla auxCasilla = tablero.getCasilla(posiciones[i][0],posiciones[i][1]);
     		assertEquals(auxCasilla.getMina(),true);
         }
+		
+		Casilla casillaSinMina1 = tablero.getCasilla(1,1);
+		Casilla casillaSinMina2 = tablero.getCasilla(5,5);
+		assertEquals(casillaSinMina1.getMina(),false);
+		assertEquals(casillaSinMina2.getMina(),false);
+		
 	}
 	
 	@Test
