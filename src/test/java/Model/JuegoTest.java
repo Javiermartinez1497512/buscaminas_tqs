@@ -25,8 +25,8 @@ public class JuegoTest {
 		
 		assertEquals(tablero.getNumCols(),tableroComparar.getNumCols());
 		assertEquals(tablero.getNumFilas(),tableroComparar.getNumFilas());
-		assertTrue(juego.getNumMinas() == 10);
-		assertTrue(juego.getMarcadas() == 0);
+		assertEquals(juego.getNumMinas(),10);
+		assertEquals(juego.getMarcadas(),0);
 		
 		int [][] posiciones = juego.posicionesAleatoriasTablero();
 		tablero.colocarMinas(posiciones);
@@ -50,13 +50,13 @@ public class JuegoTest {
 	
 	@Test
 	public void testGetNumMinas() {
-		assertTrue(juego.getNumMinas() == 10);
+		assertEquals(juego.getNumMinas(),10);
 	}
 	
 	@Test
 	public void testSetNumMinas() {
 		juego.setNumMinas(5);
-		assertTrue(juego.getNumMinas() == 5);
+		assertEquals(juego.getNumMinas(),5);
 	}
 	
 	@Test
@@ -113,17 +113,17 @@ public class JuegoTest {
 	@Test
 	public void testActualizarMarcas() {
 		juego.actualizarMarcas();
-		assertTrue(juego.getMarcadas() == 0);
+		assertEquals(juego.getMarcadas(),0);
 		tablero.marcarCasilla(0,0);
 		tablero.marcarCasilla(5,5);	
 		juego.actualizarMarcas();
-		assertTrue(juego.getMarcadas() == 2);
+		assertEquals(juego.getMarcadas(),2);
 	}
 	
 	@Test
 	public void testActualizarMinasAbiertas() {
 		juego.actualizarMinasAbiertas();
-		assertTrue(juego.getMinasAbiertas() == false);
+		assertEquals(juego.getMinasAbiertas(),false);
 		
 		Casilla casilla1 = tablero.getCasilla(0,0);
 		casilla1.setMina(true);
@@ -138,18 +138,18 @@ public class JuegoTest {
 		
 		JuegoMock juegoMock = new JuegoMock();
 		juegoMock.iniciarJuegoSinMinas(9,9);
-		juego.actualizarVictoria();
+		juegoMock.actualizarVictoria();
 	
 		for (int i = 0; i < tablero.getNumCols(); i++) {
 			for (int j = 0; j < tablero.getNumFilas(); j++) {
 				Casilla auxCasilla = tablero.getCasilla(i,j);
 				if(!auxCasilla.getMina()) {
-					juego.abrirCasilla(i,j);
+					juegoMock.abrirCasilla(i,j);
 				}
 			}
 		}
-		juego.actualizarVictoria();
-		assertEquals(juego.getVictoria(),true);	
+		juegoMock.actualizarVictoria();
+		assertEquals(juegoMock.getVictoria(),true);	
 
 	}
 	

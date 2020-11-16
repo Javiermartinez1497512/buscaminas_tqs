@@ -1,5 +1,7 @@
 package Controlador;
 
+import javax.swing.JMenuItem;
+
 import Model.Juego;
 import Model.JuegoMock;
 import Model.Tablero;
@@ -30,6 +32,17 @@ public class ControladorJuegoMock extends ControladorJuego{
 
 		juego.setNumMinas(minas);
 		juego.iniciarJuegoSinMinas(filas, columnas); 
+	}
+	
+	public void crearNivel(JMenuItem _menu) {
+		JMenuItem menu = _menu;
+		if(menu.getText()=="Facil") {
+			this.setNivel(1);
+		}else if(menu.getText()=="Medio"){
+			this.setNivel(2);
+		}else if(menu.getText()=="Dificil") {
+			this.setNivel(3);
+		}
 	}
 	
 	public JuegoMock getJuego() {return this.juego;}

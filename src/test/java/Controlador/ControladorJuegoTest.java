@@ -13,16 +13,16 @@ import Vista.VistaJuego;
 
 public class ControladorJuegoTest {
 	Juego juego;
-	ControladorJuego controlador;
-	VistaJuego vistaJuego;
+	ControladorJuegoMock controlador;
+	//VistaJuego vistaJuego;
 	
 	@Before
 	public void setUp() throws Exception {
-		controlador = new ControladorJuego();
-		vistaJuego = new VistaJuego();
-		controlador.setVistaJuego(vistaJuego);
-		vistaJuego.setControladorJuego(controlador);
-		vistaJuego.iniciarPartida();
+		controlador = new ControladorJuegoMock();
+		//vistaJuego = new VistaJuego();
+		//controlador.setVistaJuego(vistaJuego);
+		//vistaJuego.setControladorJuego(controlador);
+		//vistaJuego.iniciarPartida();
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class ControladorJuegoTest {
 		juego = new Juego();
 		
 		// Nivel Facil
-		assertTrue(controlador.getNivel()==1);
+		assertEquals(controlador.getNivel(),1);
 		int filas = 9;
 		int columnas = 9;
 		int minas = 10;
@@ -44,7 +44,7 @@ public class ControladorJuegoTest {
 		// Nivel Medio
 		controlador.setNivel(2);
 		controlador.nuevoJuego();
-		assertTrue(controlador.getNivel()==2);
+		assertEquals(controlador.getNivel(),2);
 		filas = 16;
 		columnas = 16;
 		minas = 40;
@@ -58,7 +58,7 @@ public class ControladorJuegoTest {
 		// Nivel Dificil
 		controlador.setNivel(3);
 		controlador.nuevoJuego();
-		assertTrue(controlador.getNivel()==3);
+		assertEquals(controlador.getNivel(),3);
 		filas = 22;
 		columnas = 22;
 		minas = 99;
