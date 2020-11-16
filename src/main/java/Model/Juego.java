@@ -55,7 +55,7 @@ public class Juego {
 		Casilla casilla = tablero.getCasilla(_fila, _columna);
 		if(casilla.getMarcada()) {
 			tablero.desmarcarCasilla(_fila, _columna);
-		}else if(this.marcasDisponibles() && !casilla.getMarcada()) {
+		}else if(this.marcasDisponibles()) {
 			tablero.marcarCasilla(_fila,_columna);
 		}
 	}

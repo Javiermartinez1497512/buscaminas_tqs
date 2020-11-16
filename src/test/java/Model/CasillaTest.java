@@ -35,12 +35,12 @@ public class CasillaTest {
 	@Test
 	public void testConstructor() {
 		
-		assertTrue(casilla.getFila() == 0);
-		assertTrue(casilla.getColumna() == 0);
-		assertTrue(casilla.getAbierta() == false);
-		assertTrue(casilla.getMina() == false);
-		assertTrue(casilla.getMarcada() == false);
-		assertTrue(casilla.getMinasVecinas() == 0);		
+		assertEquals(casilla.getFila(),0);
+		assertEquals(casilla.getColumna(),0);
+		assertEquals(casilla.getAbierta(),false);
+		assertEquals(casilla.getMina(),false);
+		assertEquals(casilla.getMarcada(),false);
+		assertEquals(casilla.getMinasVecinas(),0);		
 	}
 	
 	@Test
@@ -108,29 +108,29 @@ public class CasillaTest {
 	
 	@Test
 	public void testSetMina() {
-		assertTrue(casilla.getMina() == false);
+		assertEquals(casilla.getMina(),false);
 		casilla.setMina(true);
 		assertTrue(casilla.getMina() == true);
 		casilla.setMina(false);
-		assertTrue(casilla.getMina() == false);
+		assertEquals(casilla.getMina(),false);
 	}
 	
 	@Test
 	public void testSetAbierta() {
-		assertTrue(casilla.getAbierta() == false);
+		assertEquals(casilla.getAbierta(),false);
 		casilla.setAbierta(true);
 		assertTrue(casilla.getAbierta() == true);
 		casilla.setAbierta(false);
-		assertTrue(casilla.getAbierta() == false);
+		assertEquals(casilla.getAbierta(),false);
 	}
 	
 	@Test
 	public void testSetMarcada() {
-		assertTrue(casilla.getMarcada() == false);
+		assertEquals(casilla.getMarcada(),false);
 		casilla.setMarcada(true);
 		assertTrue(casilla.getMarcada() == true);
 		casilla.setMarcada(false);
-		assertTrue(casilla.getMarcada() == false);
+		assertEquals(casilla.getMarcada(),false);
 	}
 	
 	@Test

@@ -83,6 +83,7 @@ public class JuegoTest {
 	
 	@Test
 	public void testMarcarDesmarcarCasilla() {
+		//Condition & Decision Coverage
 		//Caso para desmarcar
 		Casilla casilla = tablero.getCasilla(0,0);
 		casilla.setMarcada(true);
@@ -107,23 +108,6 @@ public class JuegoTest {
 		assertEquals(casilla3.getMarcada(),false);
 		juego.marcarDesmarcarCasilla(3, 3);
 		assertEquals(casilla3.getMarcada(),false);
-		
-		//Caso para marcar (marcas disponibles && marcada)
-		Casilla casilla4 = tablero.getCasilla(4,4);
-		juego.setMarcadas(0);
-		assertEquals(juego.marcasDisponibles(),true);
-		casilla4.setMarcada(true);
-		assertEquals(casilla4.getMarcada(),true);
-		juego.marcarDesmarcarCasilla(4, 4);
-		assertEquals(casilla4.getMarcada(),false);
-		
-		//Caso para marcar (marcas no disponibles && marcada)
-		Casilla casilla5 = tablero.getCasilla(5,5);
-		juego.setMarcadas(10);
-		assertEquals(juego.marcasDisponibles(),false);
-		casilla5.setMarcada(true);
-		assertEquals(casilla5.getMarcada(),true);
-		juego.marcarDesmarcarCasilla(5, 5);
 	}
 	
 	@Test
