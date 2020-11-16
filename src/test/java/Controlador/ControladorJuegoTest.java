@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import Model.Juego;
 import Model.Tablero;
-import Vista.VistaJuego;
 
 public class ControladorJuegoTest {
 	Juego juego;
@@ -19,10 +18,6 @@ public class ControladorJuegoTest {
 	@Before
 	public void setUp() throws Exception {
 		controlador = new ControladorJuegoMock();
-		//vistaJuego = new VistaJuego();
-		//controlador.setVistaJuego(vistaJuego);
-		//vistaJuego.setControladorJuego(controlador);
-		//vistaJuego.iniciarPartida();
 	}
 
 	@Test
