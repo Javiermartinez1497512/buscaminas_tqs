@@ -61,7 +61,15 @@ public class JuegoTest {
 	
 	@Test
 	public void testMarcasDisponibles() {
+		//Marcadas menor a minas
+		juego.setMarcadas(0);
+		juego.marcasDisponibles();
 		assertTrue(juego.getMarcadas() < juego.getNumMinas());
+		
+		//Marcadas mayor o igual a minas
+		juego.setMarcadas(10);
+		juego.marcasDisponibles();
+		assertTrue(juego.getMarcadas() >= juego.getNumMinas());
 	}
 
 	@Test
@@ -82,12 +90,40 @@ public class JuegoTest {
 		juego.marcarDesmarcarCasilla(0,0);
 		assertEquals(casilla.getMarcada(),false);
 		
-		//Caso para marcar
+		//Caso para marcar (marcas disponibles && !marcada)
 		Casilla casilla2 = tablero.getCasilla(2,2);
+		juego.setMarcadas(0);
 		assertEquals(juego.marcasDisponibles(),true);
+		casilla2.setMarcada(false);
 		assertEquals(casilla2.getMarcada(),false);
 		juego.marcarDesmarcarCasilla(2, 2);
 		assertEquals(casilla2.getMarcada(),true);
+		
+		//Caso para marcar (marcas no disponibles && !marcada)
+		Casilla casilla3 = tablero.getCasilla(3,3);
+		juego.setMarcadas(10);
+		assertEquals(juego.marcasDisponibles(),false);
+		casilla3.setMarcada(false);
+		assertEquals(casilla3.getMarcada(),false);
+		juego.marcarDesmarcarCasilla(3, 3);
+		assertEquals(casilla3.getMarcada(),false);
+		
+		//Caso para marcar (marcas disponibles && marcada)
+		Casilla casilla4 = tablero.getCasilla(4,4);
+		juego.setMarcadas(0);
+		assertEquals(juego.marcasDisponibles(),true);
+		casilla4.setMarcada(true);
+		assertEquals(casilla4.getMarcada(),true);
+		juego.marcarDesmarcarCasilla(4, 4);
+		assertEquals(casilla4.getMarcada(),false);
+		
+		//Caso para marcar (marcas no disponibles && marcada)
+		Casilla casilla5 = tablero.getCasilla(5,5);
+		juego.setMarcadas(10);
+		assertEquals(juego.marcasDisponibles(),false);
+		casilla5.setMarcada(true);
+		assertEquals(casilla5.getMarcada(),true);
+		juego.marcarDesmarcarCasilla(5, 5);
 	}
 	
 	@Test

@@ -41,6 +41,7 @@ public class JuegoMock extends Juego{
 		return posiciones;
 	}
 	public void iniciarJuegoSinMinas(Integer _fila, Integer _columna) {
+		this.setNumMinas(0);
 		this.tablero = new Tablero(_fila,_columna);
 		this.tablero.initBoard();
 	}
