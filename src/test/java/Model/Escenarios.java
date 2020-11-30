@@ -23,28 +23,22 @@ public class Escenarios {
 		menu = new JMenuItem("facil");
 		controlador.crearNivel(menu);
 		assertEquals(controlador.getNivel(),1);	
-	}
-	
-	/* ESCENARIO 2 - Crear partida con nivel Medio */
-	@Test
-	public void escenario2() {
-		ControladorJuegoMock controlador = new ControladorJuegoMock();
-		JMenuItem menu = new JMenuItem("Medio");
-		controlador.crearNivel(menu);
-		assertEquals(controlador.getNivel(),2);
 		
 		controlador.setNivel(0);
 		
+		menu = new JMenuItem("Medio");
+		controlador.crearNivel(menu);
+		assertEquals(controlador.getNivel(),2);
+			
+		controlador.setNivel(0);
+			
 		menu = new JMenuItem("medio");
 		controlador.crearNivel(menu);
 		assertEquals(controlador.getNivel(),2);	
-	}
-	
-	/* ESCENARIO 3 - Crear partida con nivel dificil */
-	@Test
-	public void escenario3() {
-		ControladorJuegoMock controlador = new ControladorJuegoMock();
-		JMenuItem menu = new JMenuItem("Dificil");
+		
+		controlador.setNivel(0);
+		
+		menu = new JMenuItem("Dificil");
 		controlador.crearNivel(menu);
 		assertEquals(controlador.getNivel(),3);	
 		
@@ -53,12 +47,12 @@ public class Escenarios {
 		menu = new JMenuItem("dificil");
 		controlador.crearNivel(menu);
 		assertEquals(controlador.getNivel(),3);	
+		
 	}
 	
-	
-	/* ESCENARIO 4 - MARCAR UNA CASILLA */
+	/* ESCENARIO 2 - MARCAR UNA CASILLA */
 	@Test
-	public void escenario4() {
+	public void escenario2() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		Tablero tablero = new Tablero(9,9);
@@ -84,9 +78,9 @@ public class Escenarios {
 		assertFalse(tablero.getCasilla(10, 10).getMarcada());
 	}
 	
-	/* ESCENARIO 2 - ABRIR UNA CASILLA */
+	/* ESCENARIO 3 - ABRIR UNA CASILLA */
 	@Test
-	public void escenario5() {
+	public void escenario3() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		Tablero tablero = new Tablero(9,9);
@@ -113,9 +107,9 @@ public class Escenarios {
 	}
 	
 	
-	/* ESCENARIO 6 - Ganar la partida abriendo las casillas*/
+	/* ESCENARIO 4 - Ganar la partida abriendo las casillas*/
 	@Test
-	public void Escenario6() {
+	public void escenario4() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		juegoMock.iniciarJuego(9, 9);
@@ -213,9 +207,9 @@ public class Escenarios {
 		assertTrue(juegoMock.getVictoria());
 	}
 	
-	/* ESCENARIO 7 - Ganar la partida marcando las casillas con mina */
+	/* ESCENARIO 5 - Ganar la partida marcando las casillas con mina */
 	@Test
-	public void escenario7() {
+	public void escenario5() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		juegoMock.iniciarJuego(9, 9);
@@ -245,9 +239,9 @@ public class Escenarios {
 		assertTrue(juegoMock.getVictoria());
 	}
 	
-	/* ESCENARIO 8 - Perder la partida */
+	/* ESCENARIO 6 - Perder la partida */
 	@Test
-	public void escenario8() {
+	public void escenario6() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		juegoMock.iniciarJuego(9, 9);
@@ -259,8 +253,6 @@ public class Escenarios {
 		juegoMock.actualizarMinasAbiertas();
 		assertTrue(juegoMock.getMinasAbiertas());
 	}
-	
-	
 	
 	
 	/* Exploratory - Ataque 1 */
