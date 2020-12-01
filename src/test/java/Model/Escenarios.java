@@ -254,6 +254,98 @@ public class Escenarios {
 		assertTrue(juegoMock.getMinasAbiertas());
 	}
 	
+	/* ESCENARIO 7 - Contar minas vecinas */
+	@Test
+	public void escenario7() {
+		JuegoMock juegoMock = new JuegoMock();
+		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		tablero.colocarMinas(posiciones);
+		
+		assertEquals(tablero.getCasilla(0, 2).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(0, 3).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(0, 4).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(0, 5).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(0, 6).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(0, 7).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(0, 8).getMinasVecinas(),0);
+		
+		assertEquals(tablero.getCasilla(1, 0).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(1, 1).getMinasVecinas(),3);
+		assertEquals(tablero.getCasilla(1, 3).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(1, 4).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(1, 5).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(1, 6).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(1, 7).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(1, 8).getMinasVecinas(),0);
+		
+		assertEquals(tablero.getCasilla(2, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(2, 1).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(2, 2).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(2, 4).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(2, 5).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(2, 6).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(2, 7).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(2, 8).getMinasVecinas(),0);
+		
+		assertEquals(tablero.getCasilla(3, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(3, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(3, 2).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(3, 3).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(3, 4).getMinasVecinas(),3);
+		assertEquals(tablero.getCasilla(3, 6).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(3, 7).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(3, 8).getMinasVecinas(),0);
+		
+		assertEquals(tablero.getCasilla(4, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(4, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(4, 2).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(4, 3).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(4, 5).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(4, 6).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(4, 7).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(4, 8).getMinasVecinas(),0);
+		
+		assertEquals(tablero.getCasilla(5, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(5, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(5, 2).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(5, 3).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(5, 4).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(5, 5).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(5, 6).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(5, 7).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(5, 8).getMinasVecinas(),1);
+		
+		assertEquals(tablero.getCasilla(6, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(6, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(6, 2).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(6, 3).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(6, 5).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(6, 6).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(6, 8).getMinasVecinas(),2);
+		
+		assertEquals(tablero.getCasilla(7, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(7, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(7, 2).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(7, 3).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(7, 4).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(7, 5).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(7, 6).getMinasVecinas(),2);
+		assertEquals(tablero.getCasilla(7, 8).getMinasVecinas(),3);
+		
+		assertEquals(tablero.getCasilla(8, 0).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 1).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 2).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 3).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 4).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 5).getMinasVecinas(),0);
+		assertEquals(tablero.getCasilla(8, 6).getMinasVecinas(),1);
+		assertEquals(tablero.getCasilla(8, 7).getMinasVecinas(),2);
+	}
+	
+	
+	
 	
 	/* Exploratory - Ataque 1 */
 	@Test
