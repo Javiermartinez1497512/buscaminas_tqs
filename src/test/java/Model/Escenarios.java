@@ -347,22 +347,33 @@ public class Escenarios {
 	
 	
 	
-	/* Exploratory - Ataque 1 */
+	/* EXPLORATORY - Ataque 1 */
 	@Test
-	public void Ataque1() {
+	public void ataque1() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		Tablero tablero = new Tablero(9,9);
 		tablero.initBoard();
 		tablero.colocarMinas(posiciones);
 		
-		tablero.abrirCasilla(2, B);
-			
+		tablero.abrirCasilla(11, 11);
 	}
 	
-	/* Exploratory - Ataque 3 */
+	/* EXPLORATORY - Ataque 2 */
 	@Test
-	public void Ataque3() {
+	public void ataque2() {
+		JuegoMock juegoMock = new JuegoMock();
+		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		tablero.colocarMinas(posiciones);
+		
+		tablero.abrirCasilla(null, 11);
+	}
+	
+	/* EXPLORATORY - Ataque 3 */
+	@Test
+	public void ataque3() {
 		JuegoMock juegoMock = new JuegoMock();
 		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
 		Tablero tablero = new Tablero(9,9);
@@ -370,6 +381,52 @@ public class Escenarios {
 		tablero.colocarMinas(posiciones);
 		
 		tablero.abrirCasilla(null, null);
-			
 	}
+	
+	/* EXPLORATOY - ATAQUE 4 */
+	@Test
+	public void ataque4() {
+		JuegoMock juegoMock = new JuegoMock();
+		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		tablero.colocarMinas(posiciones);
+		
+		tablero.abrirCasilla(2147483648, null);
+	}
+	
+	/* EXPLORATORY - ATAQUE 5 */
+	@Test
+	public void ataque5() {
+		JuegoMock juegoMock = new JuegoMock();
+		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		tablero.colocarMinas(posiciones);
+		
+		tablero.getCasilla(9, 1);
+		tablero.getCasilla(1, 9);
+	}
+	
+	/* EXPLORATORY - Ataque 7 */
+	@Test
+	public void ataque7() {
+		JuegoMock juegoMock = new JuegoMock();
+		int [][] posiciones = juegoMock.posicionesAleatoriasTablero();
+		Tablero tablero = new Tablero(9,9);
+		tablero.initBoard();
+		tablero.colocarMinas(posiciones);
+		
+		tablero.abrirCasilla(2, 2);
+		tablero.marcarCasilla(2, 2);
+		assertFalse(tablero.getCasilla(2, 2).getMarcada());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
