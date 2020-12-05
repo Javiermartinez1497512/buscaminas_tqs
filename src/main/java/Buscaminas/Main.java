@@ -1,6 +1,7 @@
 package Buscaminas;
 
 import Controlador.ControladorJuego;
+import Controlador.ControladorJuegoMock;
 import Vista.VistaJuego;
 
 public class Main {

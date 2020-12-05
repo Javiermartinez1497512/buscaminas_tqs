@@ -1,54 +1,53 @@
 package Controlador;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 
 import Model.Juego;
 import Model.JuegoMock;
+import Model.JuegoMock2;
+import Model.JuegoMock3;
+import Model.Tablero;
 import Vista.VistaJuego;
 
-public class ControladorJuego implements MouseListener, ActionListener{
+public class ControladorJuegoMock3 extends ControladorJuego{
 	
 	private VistaJuego vistaJuego;
-	private JuegoMock juego;
-	private Integer nivel=1; //Por defecto nivel Facil
-	
-	public ControladorJuego() {
-		this.nuevoJuego();
-	}
-	
-	public void setVistaJuego(VistaJuego _vista) {
-		this.vistaJuego=_vista;
-	}
-	
-	public Juego getJuego() {
-		return this.juego;
+	private JuegoMock3 juego;
+	private int nivel = 1;
+	public ControladorJuegoMock3() {
+		this.juego =  new JuegoMock3();
+
 	}
 	
 	public void nuevoJuego() {
-		this.juego =  new JuegoMock();
-		Integer filas=9;
-		Integer columnas=9;
-		Integer minas=10;
-		if(this.nivel==2) {
-			filas=16;
-			columnas=16;
-			minas=40;
-		}else if(this.nivel==3) {
-			filas=22;
-			columnas=22;
-			minas=99;
-		}
-		
+		this.juego =  new JuegoMock3();
+		Integer filas=16;
+		Integer columnas=16;
+		Integer minas=40;
+
+
 		juego.setNumMinas(minas);
-		juego.iniciarJuego(filas, columnas); 
-		
+		//juego.iniciarJuegoSinMinas(filas, columnas);
+		juego.iniciarJuego(filas, columnas);
 	}
+	
+	public void crearNivel(JMenuItem _menu) {
+		JMenuItem menu = _menu;
+		if(menu.getText()=="Facil") {
+			this.setNivel(1);
+		}else if(menu.getText()=="Medio"){
+			this.setNivel(2);
+		}else if(menu.getText()=="Dificil") {
+			this.setNivel(3);
+		}
+	}
+	
+	public JuegoMock3 getJuego() {return this.juego;}
+	
 	public void setNivel(Integer _nivel) {
 		this.nivel=_nivel;
 	}
@@ -79,6 +78,11 @@ public class ControladorJuego implements MouseListener, ActionListener{
 			juego.marcarDesmarcarCasilla(fila, columna);
 		}
 	}
+	
+	public void setVistaJuego(VistaJuego _vista) {
+		this.vistaJuego=_vista;
+	}
+	
 	
 	public void actualizarJuego() {
 		juego.actualizarMarcas();
@@ -112,18 +116,4 @@ public class ControladorJuego implements MouseListener, ActionListener{
 		crearNivel(menu);
 	}
 	
-	public void crearNivel(JMenuItem _menu) {
-		JMenuItem menu = _menu;
-		if(menu.getText()=="Facil") {
-			this.setNivel(1);
-		}else if(menu.getText()=="Medio"){
-			this.setNivel(2);
-		}else if(menu.getText()=="Dificil") {
-			this.setNivel(3);
-		}
-		
-		vistaJuego.resetTablero();
-		vistaJuego.iniciarPartida();
-	}
-
 }

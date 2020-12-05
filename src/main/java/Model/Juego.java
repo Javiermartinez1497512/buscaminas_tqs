@@ -5,7 +5,7 @@ import java.util.Random;
 public class Juego {
 	
 	protected Tablero tablero;
-	private Integer numMinas = 10; //Por defecto el juego incluira 10 minas
+	private Integer numMinas = 40; //Por defecto el juego incluira 10 minas
 	private Integer marcadas = 0; //Por defecto el juego empieza con 0 marcas
 	private Boolean minasAbiertas = false; // Por defecto el juego empieza sin minas abiertas
 	private Boolean victoria = false; // Por defecto el juego empieza sin victoria

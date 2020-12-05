@@ -2,9 +2,7 @@ package Controlador;
 
 import javax.swing.JMenuItem;
 
-import Model.Juego;
 import Model.JuegoMock;
-import Model.Tablero;
 
 public class ControladorJuegoMock extends ControladorJuego{
 	
