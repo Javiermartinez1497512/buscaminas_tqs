@@ -27,3 +27,15 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
+task customFatJar(type: Jar){
+	manifest {
+		attributes 'Main-Class':'Buscaminas.Main2'
+		//attributes 'Main-Class':'Buscaminas.Main3'
+		//attributes 'Main-Class':'Buscaminas.Main4'
+	}
+	baseName='Buscaminas-Nivel-Facil-jar'
+	//baseName='Buscaminas-Nivel-Medio-jar'
+	//baseName='Buscaminas-Nivel-Dificil-jar'
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it)}}
+	with jar
+}
